@@ -55,7 +55,7 @@ that contains the same elements as the ones from the original arrays.
 The concat() method preserves empty slots if any of the source arrays is sparse.
 
 The concat() method is generic.
-The this value is treated in the same way as the other arguments (except it will be converted to an object first),
+The "this" value is treated in the same way as the other arguments (except it will be converted to an object first),
 which means plain objects will be directly prepended to the resulting array,
 while array-like objects with truthy @@isConcatSpreadable will be spread into the resulting array.
  */
@@ -83,8 +83,17 @@ const number123 = num1.concat(num2, num3);
 console.log(`num1: `, num1);
 console.log(`num2: `, num2);
 console.log(`num3: `, num3);
-console.log(`numbers123: `, number123);   // expceted: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(`numbers123: `, number123);   // expected: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 console.log(`-`.repeat(40));
 
 
+// Concatenating values to an array
+const threeLetters = ["a", "b", "c"];
+
+const ThreeAlphaNumeric = threeLetters.concat(1, [2, 3]);
+
+console.log(`ThreeLetters: `, letters);
+console.log(`ThreeAlphaNumeric: `, alphaNumeric);    // expected: ['a', 'b', 'c', 1, 2, 3]
+
+console.log(`-`.repeat(40))
