@@ -94,6 +94,37 @@ const threeLetters = ["a", "b", "c"];
 const ThreeAlphaNumeric = threeLetters.concat(1, [2, 3]);
 
 console.log(`ThreeLetters: `, letters);
-console.log(`ThreeAlphaNumeric: `, alphaNumeric);    // expected: ['a', 'b', 'c', 1, 2, 3]
+console.log(`ThreeAlphaNumeric: `, ThreeAlphaNumeric);    // expected: ['a', 'b', 'c', 1, 2, 3]
 
 console.log(`-`.repeat(40))
+
+
+// Concatenating nested arrays (demonstrates retention of reference)
+const nestedNum1 = [[1]];
+const nestedNum2 = [2, [3]];
+
+const nestedNumbers = nestedNum1.concat(nestedNum2);
+
+console.log(`NestedNum1:`, nestedNum1);
+console.log(`NestedNum2:`, nestedNum2);
+console.log(`NestedNumbers: `, nestedNumbers);   // expected: [[1], 2, [3]]
+
+// Modify the first element of num1
+nestedNum1[0].push(4);
+
+console.log(`NestedNum1:`, nestedNum1);
+console.log(`NestedNum2:`, nestedNum2);
+console.log(`NestedNumbers: `, nestedNumbers); // expected: [[1, 4], 2, [3]]
+
+console.log(`-`.repeat(40))
+
+
+// Using concat() on sparse arrays (if any of the source arrays is sparse, the resulting array will also be sparse)
+console.log([1, , 3].concat([4, 5])); // expected: [1, empty, 3, 4, 5]
+console.log([1, 2].concat([3, , 5])); // expected: [1, 2, 3, empty, 5]
+
+console.log(`-`.repeat(40))
+
+
+// TO FIX -> Concatenating array-like objects with Symbol.isConcatSpreadable
+// TO FIX -> Calling concat() on non-array objects
