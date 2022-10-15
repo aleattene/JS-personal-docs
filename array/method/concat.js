@@ -6,11 +6,13 @@ See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Obj
 
 const array1 = ['a', 'b', 'c'];
 const array2 = ['d', 'e', 'f'];
+
 const array3 = array1.concat(array2);
 
-console.log(`array3:`, array3);   // expected: Array ["a", "b", "c", "d", "e", "f"]
 console.log(`array1:`, array1);   // no modified
 console.log(`array2:`, array2);   // no modified
+console.log(`array3:`, array3);   // expected: Array ["a", "b", "c", "d", "e", "f"]
+
 
 console.log(`-`.repeat(40));
 
@@ -30,10 +32,12 @@ See https://developer.mozilla.org/en-US/docs/Glossary/Shallow_copy for more deta
 */
 
 const array4 = array3.concat()
-console.log(`array4:`, array4);   // shallow copy
+
 console.log(`array3:`, array3);   // no modified
+console.log(`array4:`, array4);   // shallow copy
 
 console.log(`-`.repeat(40));
+
 /*
 The concat method creates a new array.
 The array will first be populated by the elements in the object on which it is called.
@@ -61,8 +65,26 @@ const letters = ["a", "b", "c"];
 const numbers = [1, 2, 3];
 
 const alphaNumeric = letters.concat(numbers);
-console.log(`alphaNumeric:`, alphaNumeric);  // expected: ['a', 'b', 'c', 1, 2, 3]
+
 console.log(`letters:`, letters);  // no modified
 console.log(`numbers:`, numbers);  // no modified
+console.log(`alphaNumeric:`, alphaNumeric);  // expected: ['a', 'b', 'c', 1, 2, 3]
 
 console.log(`-`.repeat(40));
+
+
+// Concatenating three arrays
+const num1 = [1, 2, 3];
+const num2 = [4, 5, 6];
+const num3 = [7, 8, 9];
+
+const number123 = num1.concat(num2, num3);
+
+console.log(`num1: `, num1);
+console.log(`num2: `, num2);
+console.log(`num3: `, num3);
+console.log(`numbers123: `, number123);   // expceted: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+console.log(`-`.repeat(40));
+
+
