@@ -12,7 +12,7 @@ const even = (element) => element % 2 === 0;
 
 console.log(array.some(even));  // expected: true
 
-console.log(`-`.repeat(40))
+console.log(`-`.repeat(40));
 
 /*
 Syntax
@@ -46,11 +46,50 @@ function isBiggerThan10(element, index, array) {
 console.log([2, 5, 8, 1, 4].some(isBiggerThan10));  // expected: false
 console.log([12, 5, 8, 1, 4].some(isBiggerThan10)); // expected: true
 
-console.log(`-`.repeat(40))
+console.log(`-`.repeat(40));
 
 // Testing array elements using arrow functions (same test)
 
 console.log([2, 5, 8, 1, 4].some((x) => x > 10));  // expected: false
 console.log([12, 5, 8, 1, 4].some((x) => x > 10)); // expected: true
 
-console.log(`-`.repeat(40))
+console.log(`-`.repeat(40));
+
+
+// Checking whether a value exists in an array (it mimics the includes () method)
+const fruits = ['apple', 'banana', 'mango', 'guava'];
+
+function checkAvailability(arr, val) {
+    return arr.some((arrVal) => val === arrVal);
+}
+
+console.log(checkAvailability(fruits, 'kela'));   // expected: false
+console.log(checkAvailability(fruits, 'banana')); // expected: true
+
+console.log(`-`.repeat(40));
+
+
+// Checking whether a value exists using an arrow function (TO FIX ONLINE -> Open Source)
+console.log(fruits.some((arrVal) => arrVal === 'kela'));   // expected: false
+console.log(fruits.some((arrVal) => arrVal === 'banana')); // expected: true
+
+console.log(`-`.repeat(40));
+
+
+// Converting any value to Boolean
+const TRUTHY_VALUES = [true, 'true', 1];
+
+function getBoolean(value) {
+    if (typeof value === 'string') value = value.toLowerCase().trim();
+    return TRUTHY_VALUES.some((t) => t === value);
+}
+
+console.log(getBoolean(false));   // expected: false
+console.log(getBoolean('false')); // expected: false
+console.log(getBoolean(1));       // expected: true
+console.log(getBoolean('true'));  // expected: true
+
+console.log(getBoolean(false, 'true'));  // expected: false  ???
+console.log(getBoolean('true', false));  // expected: true  ???
+
+console.log(`-`.repeat(40));

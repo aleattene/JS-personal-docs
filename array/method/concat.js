@@ -96,7 +96,7 @@ const ThreeAlphaNumeric = threeLetters.concat(1, [2, 3]);
 console.log(`ThreeLetters: `, letters);
 console.log(`ThreeAlphaNumeric: `, ThreeAlphaNumeric);    // expected: ['a', 'b', 'c', 1, 2, 3]
 
-console.log(`-`.repeat(40))
+console.log(`-`.repeat(40));
 
 
 // Concatenating nested arrays (demonstrates retention of reference)
@@ -116,14 +116,14 @@ console.log(`NestedNum1:`, nestedNum1);
 console.log(`NestedNum2:`, nestedNum2);
 console.log(`NestedNumbers: `, nestedNumbers); // expected: [[1, 4], 2, [3]]
 
-console.log(`-`.repeat(40))
+console.log(`-`.repeat(40));
 
 
 // Using concat() on sparse arrays (if any of the source arrays is sparse, the resulting array will also be sparse)
 console.log([1, , 3].concat([4, 5])); // expected: [1, empty, 3, 4, 5]
 console.log([1, 2].concat([3, , 5])); // expected: [1, 2, 3, empty, 5]
 
-console.log(`-`.repeat(40))
+console.log(`-`.repeat(40));
 
 
 // TO FIX -> Concatenating array-like objects with Symbol.isConcatSpreadable
