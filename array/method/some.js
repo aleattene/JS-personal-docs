@@ -93,3 +93,14 @@ console.log(getBoolean(false, 'true'));  // expected: false  ???
 console.log(getBoolean('true', false));  // expected: true  ???
 
 console.log(`-`.repeat(40));
+
+
+// Using some() on sparse arrays (some() will not run its predicate on empty slots)
+console.log([1, , 3].some((x) => x === undefined));     // expected: false
+console.log([1, , 1].some((x) => x !== 1));             // expected: false
+console.log([1, undefined, 1].some((x) => x !== 1));    // expected: true
+
+console.log(`-`.repeat(40));
+
+
+// TO FIX -> Calling some() on non-array objects
