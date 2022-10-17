@@ -65,3 +65,62 @@ console.log(`-`.repeat(40));
 
 // TO FIX -> The difference between rest parameters and the arguments object
 // TO FIX -> From arguments to an array
+
+
+/*
+Using Rest Parameters
+In this example, the first argument is mapped to a and the second to b, so these named arguments are used as normal.
+However, the third argument, manyMoreArgs, will be an array that contains the third, fourth, fifth, sixth, …, nth
+as many arguments that the user includes.
+*/
+
+function myFun(a, b, ...manyMoreArgs) {
+    console.log("a", a);
+    console.log("b", b);
+    console.log("manyMoreArgs", manyMoreArgs);
+}
+
+myFun("one", "two", "three", "four", "five", "six");
+
+/*
+Expected Output:
+    a, "one"
+    b, "two"
+    manyMoreArgs, ["three", "four", "five", "six"] <-- notice it's an array
+*/
+
+console.log(`-`.repeat(40));
+
+myFun("one", "two", "three");
+/*
+Expected Output:
+    a, "one"
+    b, "two"
+    manyMoreArgs, ["three", "four", "five", "six"] <-- notice it's an array
+*/
+
+console.log(`-`.repeat(40));
+
+myFun("one", "two");
+
+/*
+Expected Output:
+    a, "one"
+    b, "two"
+    manyMoreArgs, [] <-- yip, still an array
+*/
+
+console.log(`-`.repeat(40));
+
+
+// Argument length (since theArgs is an array, a count of its elements is given by the length property)
+function fun1(...Args) {
+    console.log(Args.length);
+}
+
+fun1();               // expected output: 0
+fun1(5);        // expected output: 1
+fun1(5, 6, 7);  // expected output: 3
+
+console.log(`-`.repeat(40));
+
