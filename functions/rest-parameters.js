@@ -55,10 +55,10 @@ console.log(`-`.repeat(40));
 // The rest parameter must be the last parameter in the function definition.
 // Wrong -> foo(...wrong, arg2, arg3)
 // Correct
-function myFun(arg1, arg2, ...correct) {
+function myFunOne(arg1, arg2, ...correct) {
     console.log(arg1,arg2,correct)
 }
-myFun(1,2,3,4,5,6,);    // expected output (1,2,[3,4,5,6])
+myFunOne(1,2,3,4,5,6,);    // expected output (1,2,[3,4,5,6])
 
 console.log(`-`.repeat(40));
 
@@ -74,13 +74,13 @@ However, the third argument, manyMoreArgs, will be an array that contains the th
 as many arguments that the user includes.
 */
 
-function myFun(a, b, ...manyMoreArgs) {
+function myFunTwo(a, b, ...manyMoreArgs) {
     console.log("a", a);
     console.log("b", b);
     console.log("manyMoreArgs", manyMoreArgs);
 }
 
-myFun("one", "two", "three", "four", "five", "six");
+myFunTwo("one", "two", "three", "four", "five", "six");
 
 /*
 Expected Output:
@@ -91,7 +91,7 @@ Expected Output:
 
 console.log(`-`.repeat(40));
 
-myFun("one", "two", "three");
+myFunTwo("one", "two", "three");
 /*
 Expected Output:
     a, "one"
@@ -124,3 +124,53 @@ fun1(5, 6, 7);  // expected output: 3
 
 console.log(`-`.repeat(40));
 
+
+/*
+Using rest parameters in combination with ordinary parameters
+In the next example, a rest parameter is used to collect all parameters after the first parameter into an array.
+Each one of the parameter values collected into the array is then multiplied by the first parameter,
+and the array is returned
+ */
+function multiply(multiplier, ...Args) {
+    return Args.map((element) => multiplier * element);
+}
+
+const arr = multiply(2, 15, 25, 42);
+
+console.log(arr);   // expected output: [30, 50, 84]
+
+console.log(`-`.repeat(40));
+
+
+/*
+Rest parameters are real arrays; the arguments object is not
+Array methods can be used on rest parameters, but not on the arguments object.
+*/
+function sortRestArgs(...Args) {
+    return Args.sort();
+}
+
+console.log(sortRestArgs(5, 3, 7, 1));  // expected output: 1, 3, 5, 7
+
+console.log(`-`.repeat(40));
+
+// function sortArguments() {
+//     console.log(arguments); // expected output: [Arguments] { '0': 5, '1': 3, '2': 7, '3': 1 }
+//     const sortedArgs = arguments.sort();
+//     return sortedArgs;  // this will never happen
+// }
+//
+// console.log(sortArguments(5, 3, 7, 1)); // throws a TypeError (arguments.sort is not a function)
+console.log("arguments.sort is not a function");
+
+console.log(`-`.repeat(40));
+
+
+// To use Array methods on the arguments object, it must be converted to a real array first.
+function sortRealArguments() {
+    const args = Array.from(arguments);
+    return args.sort();
+}
+console.log(sortRealArguments(5, 3, 7, 1)); // expected output: 1, 3, 5, 7
+
+console.log(`-`.repeat(40));
