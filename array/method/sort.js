@@ -43,7 +43,11 @@ Syntax
 // TO FIX -> Description
 
 
-// Creating, displaying, and sorting an array
+/*
+Creating, displaying, and sorting an array
+The following example creates four arrays and displays the original array, then the sorted arrays.
+The numeric arrays are sorted without a compare function, then sorted using one.
+*/
 const stringArray = ['Blue', 'Humpback', 'Beluga'];
 const numberArray = [40, 1, 5, 200];
 const numericStringArray = ['80', '9', '700'];
