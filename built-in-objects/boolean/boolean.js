@@ -23,4 +23,27 @@ if (x2) {
 console.log(`-`.repeat(40));
 
 
+// Do not use the Boolean() constructor with new to convert a non-boolean value to a boolean value
+// Use Boolean as a function or a double NOT instead
+// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT#double_not_!!
+// for more details.
+// const good = Boolean(expression);    // use this
+// const good2 = !!(expression);        // or this
+// const bad = new Boolean(expression); // don't use this!
+
+// If you specify any object, including a Boolean object whose value is false, as the initial value of a Boolean object,
+// the new Boolean object has a value of true.
+const myFalse = new Boolean(false);   // initial value of false
+console.log(myFalse.valueOf()); // expected: false
+
+const g = Boolean(myFalse); // initial value of true
+console.log(g.valueOf()); // expected: true
+
+const myString = new String('Hello'); // string object
+const s = Boolean(myString);    // initial value of true
+console.log(s.valueOf()); // expected: true
+
+console.log(`-`.repeat(40));
+
+
 //
