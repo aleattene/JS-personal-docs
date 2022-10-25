@@ -45,5 +45,47 @@ console.log(s.valueOf()); // expected: true
 
 console.log(`-`.repeat(40));
 
+// Warning: You should rarely find yourself using Boolean as a constructor.
 
-//
+
+// TO FIX -> Boolean coercion
+
+
+// Constructor -> Boolean() -> Creates a new Boolean object.
+
+
+// TO FIX -> Instance methods
+
+
+// Examples
+// Creating Boolean objects with an initial value of false
+const bNoParam = new Boolean();
+const bZero = new Boolean(0);
+const bNull = new Boolean(null);
+const bUndefined = new Boolean(undefined);
+const bEmptyString = new Boolean('');
+const bfalse = new Boolean(false);
+
+console.log(bNoParam.valueOf()); // expected: false
+console.log(bZero.valueOf()); // expected: false
+console.log(bNull.valueOf()); // expected: false
+console.log(bUndefined.valueOf()); // expected: false
+console.log(bEmptyString.valueOf()); // expected: false
+console.log(bfalse.valueOf()); // expected: false
+
+// Creating Boolean objects with an initial value of true
+const btrue = new Boolean(true);
+const btrueString = new Boolean('true');
+const bfalseString = new Boolean('false');
+const bSuLin = new Boolean('Su Lin');
+const bArrayProto = new Boolean([]);
+const bObjProto = new Boolean({});
+
+console.log(btrue.valueOf()); // expected: true
+console.log(btrueString.valueOf()); // expected: true
+console.log(bfalseString.valueOf()); // expected: true
+console.log(bSuLin.valueOf()); // expected: true
+console.log(bArrayProto.valueOf()); // expected: true
+console.log(bObjProto.valueOf()); // expected: true
+
+console.log(`-`.repeat(40));
