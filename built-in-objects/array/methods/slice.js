@@ -69,3 +69,72 @@ console.log(fruits);    // expected: ['Banana', 'Orange', 'Lemon', 'Apple', 'Man
 console.log(citrus);    // expected: ['Orange','Lemon']
 
 console.log(`-`.repeat(40));
+
+
+// Using slice
+// In the following example, slice creates a new array, newCar, from myCar.
+// Both include a reference to the object myHonda.
+// When the color of myHonda is changed to purple, both arrays reflect the change.
+// Using slice, create newCar from myCar.
+const myHonda = {
+    color: 'red',
+    wheels: 4,
+    engine: {
+        cylinders: 4,
+        size: 2.2 }
+};
+const myCar = [myHonda, 2, 'cherry condition', 'purchased 1997'];
+const newCar = myCar.slice(0, 2);
+
+console.log('myCar =', myCar);      // expected: myCar = [{ color: 'red', wheels: 4, engine: { cylinders: 4, size: 2.2 }}, 2, 'cherry condition', 'purchased 1997']
+console.log('newCar =', newCar);    // expected: newCar = [ { color: 'red', wheels: 4, engine: { cylinders: 4, size: 2.2 } }, 2 ]
+
+console.log('myCar[0].color =', myCar[0].color);    // expected: myCar[0].color = red
+console.log('newCar[0].color =', newCar[0].color);  // expected: newCar[0].color = red
+
+// Change the color of myHonda.
+myHonda.color = 'purple';
+console.log('The new color of my Honda is', myHonda.color);  // expected: The new color of my Honda is purple
+
+console.log('myCar[0].color =', myCar[0].color);    // expected: myCar[0].color = purple
+console.log('newCar[0].color =', newCar[0].color);  // expected: newCar[0].color = purple
+
+console.log(`-`.repeat(40));
+
+
+// Calling slice() on non-array objects
+// The slice() method reads the length property of this.
+// It then reads the integer-keyed properties from start to end and defines them on a newly created array.
+const arrayLike = {
+    length: 3,
+    0: 2,
+    1: 3,
+    2: 4,
+};
+console.log(Array.prototype.slice.call(arrayLike, 1, 3));  // expected: [ 3, 4 ]    ???
+
+console.log(`-`.repeat(40));
+
+
+// Using slice() to convert array-like objects to arrays
+// The slice() method is often used with bind() and call()
+// to create a utility method that converts an array-like object into an array.
+// slice() is called with `this` passed as the first argument
+const slice = Function.prototype.call.bind(Array.prototype.slice);
+
+function list() {
+    return slice(arguments);
+}
+
+const list1 = list(1, 2, 3);
+console.log(list1); // expected: [1, 2, 3]      ???
+
+console.log(`-`.repeat(40));
+
+
+// Using slice() on sparse arrays
+// The array returned from slice() may be sparse if the source is sparse.
+console.log([1, 2, , 4, 5].slice(1, 4)); // expected: [2, empty, 4]
+
+console.log(`-`.repeat(40))
+
